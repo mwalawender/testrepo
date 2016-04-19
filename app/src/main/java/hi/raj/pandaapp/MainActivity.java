@@ -3,6 +3,7 @@ package hi.raj.pandaapp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +18,12 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
+import static util.LogUtils.makeLogTag;
+
 public class MainActivity extends BaseActivity {
 
+
+    private static final String TAG = makeLogTag(MainActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class MainActivity extends BaseActivity {
         call.enqueue(new Callback<JobList>() {
             @Override
             public void onResponse(Response<JobList> response, Retrofit retrofit) {
-
+                Log.i(TAG, "onResponse: " + response.toString());
             }
 
             @Override
